@@ -1,0 +1,19 @@
+spring:
+  application:
+    name: demo_graphql
+  datasource:
+    url: jdbc:h2:mem:demo_graphql
+    username: sa
+    password:
+    driverClassName: org.h2.Driver
+  jpa:
+    database-platform: org.hibernate.dialect.H2Dialect
+    hibernate:
+      ddl-auto: create-drop
+    defer-datasource-initialization: true
+  h2:
+    console:
+      enabled: true
+logging:
+  level:
+    com.github.rlimapro.demo_graphql: DEBUG

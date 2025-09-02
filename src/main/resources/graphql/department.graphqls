@@ -1,0 +1,26 @@
+type Department {
+    id: ID!
+    depName: String!
+    manager: Employee
+    employees: [Employee!]!
+}
+
+input CreateDepartmentInput {
+    depName: String!
+    managerId: ID
+}
+
+input UpdateDepartmentInput {
+    depName: String
+    managerId: ID
+}
+
+type Query {
+    allDepartments: [Department!]!
+    department(id: ID!): Department
+}
+
+type Mutation {
+    createDepartment(input: CreateDepartmentInput!): Department!
+    updateDepartment(id: ID!, input: UpdateDepartmentInput!): Department!
+}

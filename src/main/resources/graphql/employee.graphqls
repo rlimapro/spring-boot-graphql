@@ -1,0 +1,46 @@
+type Employee {
+    id: ID!
+    firstName: String!
+    lastName: String!
+    salary: Float!
+    department: Department!
+    supervisor: Employee
+}
+
+type EmployeePage {
+    content: [Employee!]!
+    pageNumber: Int!
+    pageSize: Int!
+    totalElements: Int!
+    totalPages: Int!
+    first: Boolean!
+    last: Boolean!
+    empty: Boolean!
+    numberOfElements: Int!
+}
+
+input CreateEmployeeInput {
+    firstName: String!
+    lastName: String!
+    salary: Float!
+    departmentId: ID!
+    supervisorId: ID
+}
+
+input UpdateEmployeeInput {
+    firstName: String
+    lastName: String
+    salary: Float
+    departmentId: ID
+    supervisorId: ID
+}
+
+extend type Query {
+    allEmployees(page: Int, size: Int, direction: String): EmployeePage!
+    employee(id: ID!): Employee
+}
+
+extend type Mutation {
+    createEmployee(input: CreateEmployeeInput!): Employee!
+    updateEmployee(id: ID!, input: UpdateEmployeeInput!): Employee!
+}
